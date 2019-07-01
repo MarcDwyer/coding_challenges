@@ -24,16 +24,17 @@ func main() {
 	r := mux.NewRouter()
 
 	r.HandleFunc("/data/{id}", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Server", "A Go Web Server")
 		vars := mux.Vars(r)
 		name := vars["id"]
 		fmt.Print(name)
 		url := fmt.Sprintf("https://api.twitch.tv/kraken/streams/%v?client_id=%v", name, os.Getenv("TWITCH"))
-		req, err := http.Get(url)
+		resp, err := http.Get(url)
 		if err != nil {
 			log.Printf(err.Error())
 		}
-		defer req.Body.Close()
-		body, _ := ioutil.ReadAll(req.Body)
+		defer resp.Body.Close()
+		body, _ := ioutil.ReadAll(resp.Body)
 
 		w.Write(body)
 
