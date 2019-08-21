@@ -1,4 +1,4 @@
-function spinWords(str) {
+function spinWords1(str) {
     let result = []
     let word = []
     for (let x = 0; x <= str.length; x++) {
@@ -28,5 +28,5 @@ function spinWords(words){
     }).join(' ');
   }
 
-  
+
 console.log(spinWords("Hey fellow warriors"))

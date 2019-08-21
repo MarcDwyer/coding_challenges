@@ -1,4 +1,4 @@
-function alpha(text) {
+function alphabetPosition(text) {
     var result = "";
     for (var i = 0; i < text.length; i++) {
         var code = text.toUpperCase().charCodeAt(i)
